@@ -107,7 +107,7 @@ def render_input_section() -> Tuple[str, bool]:
             label_visibility="collapsed",
             placeholder=(
                 "Paste your review, comment, survey response, or any text here...\n\n"
-                "Example: "Have stayed here off and on over several years. Great location…""
+                "Example: Have stayed here off and on over several years. Great location..."
             ),
             height=260,
             key="paste_input",
