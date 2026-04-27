@@ -3,7 +3,10 @@ input_handler.py — Text input (paste) and file upload tabs
 Returns (text: str, submitted: bool)
 """
 
+from __future__ import annotations
+
 import io
+from typing import Optional, Tuple
 import streamlit as st
 
 # Optional heavy imports — graceful fallback if not installed
@@ -64,7 +67,7 @@ _PARSERS = {
 }
 
 
-def _extract_text(uploaded_file) -> str | None:
+def _extract_text(uploaded_file) -> Optional[str]:
     """Extract text from an uploaded Streamlit file object."""
     ext = uploaded_file.name.rsplit(".", 1)[-1].lower()
     parser = _PARSERS.get(ext)
@@ -82,7 +85,7 @@ def _extract_text(uploaded_file) -> str | None:
 
 # ── Public renderer ─────────────────────────────────────────────────────────────
 
-def render_input_section() -> tuple[str, bool]:
+def render_input_section() -> Tuple[str, bool]:
     """
     Render the left-column input panel with two tabs:
     1. Paste Text
